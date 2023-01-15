@@ -6,6 +6,9 @@ Learn how to build automation testing framework for testing a live website. Star
 - Python
 - Selenium
 - Pytest
+- openpyxl
+- Reports (HTML, Allure)
+- pytest-xdist (Parallel execution)
 
 # Automation Steps
 - Launch travel site
