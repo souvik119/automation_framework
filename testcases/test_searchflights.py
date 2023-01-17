@@ -1,22 +1,17 @@
 import pytest
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support import expected_conditions as EC
+from pages.yatra_launch_page import LaunchPage #this is page object model for launch page
 
 #this class gets wait and driver objects from the conftest setup method
 @pytest.mark.usefixtures("setup")
 class TestSearchFlight():
 
     def test_search_flights(self):
-        
+        lp = LaunchPage(self.driver, self.wait)
         #input origin city
-        origin_city = self.wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@id='BE_flight_origin_city']")))
-        origin_city.click()
-        origin_city.send_keys("New Delhi")
-        origin_city.send_keys(Keys.ENTER)
-
+        lp.departfrom("New Delhi")
         #input destination city
-        destination_city = self.wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@id='BE_flight_arrival_city']")))
-        destination_city.click()
-        destination_city.send_keys("New York")
-        destination_city.send_keys(Keys.ENTER)
+        lp.goingto("Dubai")
+        #select departure date
+        lp.selectdate("24/01/2023")
+        #click on search button
+        lp.clicksearch()

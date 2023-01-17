@@ -8,7 +8,7 @@ import pytest
 @pytest.fixture(scope="class")
 def setup(request):
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-    wait = WebDriverWait(driver, 10) #implicit wait
+    wait = WebDriverWait(driver, 20) #implicit wait
     driver.get("https://www.yatra.com/")
     driver.maximize_window()
     request.cls.driver = driver #pass driver to test_searchflight class TestSearchFlight
